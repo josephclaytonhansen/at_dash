@@ -1,6 +1,13 @@
+<%user = User.find_by email: 'denise.jacobsen12@gmail.com'%>
+<%if current_user == user%>
+<div class="card" style="margin:auto;max-width:70%;">
 <h1>Editing Order</h1>
 
 <%= render 'form', order: @order %>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Show', @order, class:"view-order" %> |
+<%= link_to 'Back', orders_path, class:"view-order" %>
+</div>
+<%else%>
+<h2 class = "card">You must sign in as the admin</h2>
+<%end%>

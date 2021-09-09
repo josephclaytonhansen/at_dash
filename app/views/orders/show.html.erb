@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<%user = User.find_by email: 'denise.jacobsen12@gmail.com'%>
+<%if current_user == user%>
+<div class="card" style="margin:auto;height:600px; width:400px;">
 <p>
   <strong>Created:</strong>
   <%= @order.created %>
@@ -45,5 +47,9 @@
   <%= @order.tracking_number %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_order_path(@order), class:"view-order" %> |
+<%= link_to 'Back', orders_path, class:"view-order" %>
+</div>
+<%else%>
+<h2 class = "card">You must sign in as the admin</h2>
+<%end%>

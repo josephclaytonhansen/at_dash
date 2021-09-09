@@ -1,6 +1,12 @@
+<%user = User.find_by email: 'denise.jacobsen12@gmail.com'%>
+<%if current_user == user%>
+<div class = "card" style = "max-width:80%;">
 <h1>Editing Material</h1>
 
 <%= render 'form', material: @material %>
 
 <%= link_to 'Show', @material %> |
 <%= link_to 'Back', materials_path %>
+<%else%>
+<h2 class = "card">You must sign in as the admin</h2>
+<%end%>

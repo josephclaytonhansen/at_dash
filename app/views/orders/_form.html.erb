@@ -1,3 +1,5 @@
+<%user = User.find_by email: 'denise.jacobsen12@gmail.com'%>
+<%if current_user == user%>
 <%= form_with(model: order) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -57,6 +59,9 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"view-order" %>
   </div>
 <% end %>
+<%else%>
+<h2 class = "card">You must sign in as the admin</h2>
+<%end%>

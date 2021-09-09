@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<%user = User.find_by email: 'denise.jacobsen12@gmail.com'%>
+<%if current_user == user%>
+<div class="card" style="margin:auto;max-width:70%;">
 <h1>Orders</h1>
 
 <table>
@@ -30,9 +32,9 @@
         <td><%= order.customer_email %></td>
         <td><%= order.needs_follow_up %></td>
         <td><%= order.tracking_number %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', order, class: "view-order" %></td>
+        <td><%= link_to 'Edit', edit_order_path(order),class: "view-order" %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "view-order" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +42,8 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path, class: "view-order" %>
+</div>
+<%else%>
+<h2 class = "card">You must sign in as the admin</h2>
+<%end%>
