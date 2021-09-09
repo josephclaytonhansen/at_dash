@@ -7,7 +7,7 @@
 
 <%= link_to 'Show', @order, class:"view-order" %> |
 <%= link_to 'Back', orders_path, class:"view-order" %>
-<%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "view-order" %>
+<%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "view-order" %>
 </div>
 <%else%>
 <h2 class = "card">You must sign in as the admin</h2>
