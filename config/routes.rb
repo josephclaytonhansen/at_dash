@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "home#index"
   devise_for :users
   resources :orders do
   end
@@ -9,8 +10,7 @@ Rails.application.routes.draw do
     get :buy_thin_elastic, on: :member
     get :buy_mailers, on: :member
   end
-  root "home#index"
-
+ 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

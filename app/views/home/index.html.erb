@@ -85,7 +85,13 @@
         </div>
     </div>
     <div class="floating">
-        <div class="floating-el fl-login"></div>
+
+        <% if user_signed_in? %>
+        <%= link_to "", destroy_user_session_path, method: :delete, :class => 'floating-el fl-login' %>
+        <% else %>
+        <%= link_to "", new_user_session_path, :class => 'floating-el fl-login'  %> 
+        <% end %>
+
     </div>
 
     <script type="text/javascript">
