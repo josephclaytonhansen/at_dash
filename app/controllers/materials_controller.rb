@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_material, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /materials or /materials.json
   def index
@@ -36,53 +37,83 @@ class MaterialsController < ApplicationController
   end
 
   def make_pair
-    @material = Material.find(1)
-    @material.thick_elastic -= 1
-    @material.thin_elastic -= 1
-    @material.fat_quarters -= 1
-    @material.save
-    redirect_to :root
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
+      @material = Material.find(1)
+      @material.thick_elastic -= 1
+      @material.thin_elastic -= 1
+      @material.fat_quarters -= 1
+      @material.save
+      redirect_to :root
+    else
+      redirect_to :root
+    end
   end 
 
   def ship_pair
-    @material = Material.find(1)
-    @material.mailers -= 1
-    @material.stamps -= 1
-    @material.save
-    redirect_to :root
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
+      @material = Material.find(1)
+      @material.mailers -= 1
+      @material.stamps -= 1
+      @material.save
+      redirect_to :root
+    else
+      redirect_to :root
+    end
   end
   
   def buy_thin_elastic
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
     @material = Material.find(1)
     @material.thin_elastic += 5
     @material.save
     redirect_to :root
+    else
+      redirect_to :root
+    end
   end
 
   def buy_thick_elastic
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
     @material = Material.find(1)
-    @material.thick_elastic += 10
+    @material.thick_elastic += 5
     @material.save
     redirect_to :root
+    else
+      redirect_to :root
+    end
   end
 
   def buy_mailers
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
     @material = Material.find(1)
-    @material.mailers += 25
+    @material.mailers += 5
     @material.save
     redirect_to :root
+    else
+      redirect_to :root
+    end
   end
 
   # PATCH/PUT /materials/1 or /materials/1.json
   def update
-    respond_to do |format|
-      if @material.update(material_params)
-        format.html { redirect_to @material, notice: "Material was successfully updated." }
-        format.json { render :show, status: :ok, location: @material }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @material.errors, status: :unprocessable_entity }
+    user = User.find_by email: 'denise.jacobsen12@gmail.com'
+    if current_user == user
+      respond_to do |format|
+        if @material.update(material_params)
+          format.html { redirect_to @material, notice: "Material was successfully updated." }
+          format.json { render :show, status: :ok, location: @material }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @material.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to :root
     end
   end
 

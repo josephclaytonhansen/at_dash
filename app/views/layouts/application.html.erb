@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
   <%= favicon_link_tag asset_path('favicon_by_ivan_dubovik.png') %>
-    <title>ATD - Artichoke Textiles Dashboard</title>
-    <%# favicon by Ivan Dubovik%>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title>ATD - Artichoke Textiles Dashboard</title>
+  <%# favicon by Ivan Dubovik%>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+  <p class="alert"><%= alert %></p>
+  
+  <%= yield %>
+  <div class="floating">
+    <% if user_signed_in? %>
+    <%= link_to "", destroy_user_session_path, method: :delete, :class => 'floating-el fl-login' %>
+    <% else %>
+    <%= link_to "", new_user_session_path, :class => 'floating-el fl-login'  %>
+    <% end %>
+    <%=link_to "", :root, :class => 'floating-el fl-home'%>
+  </div>
+</body>
+
 </html>

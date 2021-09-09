@@ -452,7 +452,7 @@ h3 {
   right: 1em;
   top: 1em;
   width: 80px;
-  height: 85px;
+  height: 165px;
   background-color: rgba(58, 57, 57, 0.6);
   border-radius: 12px;
   border: 2px solid rgba(92, 96, 99, 0.3);
@@ -463,8 +463,6 @@ h3 {
 .floating-el {
   background-color: rgba(211, 211, 211, 0.6);
   border-radius: 12px;
-  margin-top: 11px;
-  margin-left: 8px;
   margin-right: auto;
   border: 2px solid rgba(194, 203, 211, 0.3);
   z-index: 98;
@@ -473,9 +471,20 @@ h3 {
 
 .fl-login {
   width: 60px;
+  margin-top: 11px;
+  margin-left: 8px;
   height: 60px;
   content: url("images/account.png");
 }
+
+.fl-home {
+  width: 60px;
+  margin-top: 11px;
+  margin-left: 8px;
+  height: 60px;
+  content: url("images/home.png");
+}
+
 
 .floating-el:hover {
   background-color: rgba(235, 235, 235, 0.6);

@@ -79,21 +79,15 @@
                 <div class="ig-card-header">Mailers</div>
                 <div class="ig-number"><%=m.mailers%></div>
             </div>
-            <div class = "ig-button"><%= link_to 'Add Materials', edit_material_path(m)%></div>
-            <div class = "ig-button"><%= link_to "Make", make_pair_material_path(m) %></div>
-            <div class = "ig-button"><%= link_to "Ship", ship_pair_material_path(m) %></div>
+            <div class="ig-button">
+                <%u = User.find_by email: "denise.jacobsen12@gmail.com"%>
+                <%if user_signed_in? && current_user == u%>
+                <%= link_to 'Add Materials', edit_material_path(m)%>
+                <%else%>
+                Add Materials
+                <%end%>
+            </div>
+            <div class="ig-button"><%= link_to "Make", make_pair_material_path(m) %></div>
+            <div class="ig-button"><%= link_to "Ship", ship_pair_material_path(m) %></div>
         </div>
     </div>
-    <div class="floating">
-
-        <% if user_signed_in? %>
-        <%= link_to "", destroy_user_session_path, method: :delete, :class => 'floating-el fl-login' %>
-        <% else %>
-        <%= link_to "", new_user_session_path, :class => 'floating-el fl-login'  %> 
-        <% end %>
-
-    </div>
-
-    <script type="text/javascript">
-        Packs.application.colorChange()
-    </script>
