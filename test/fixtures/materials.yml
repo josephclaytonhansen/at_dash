@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  thin_elastic: 1
+  thick_elastic: 1
+  fat_quarters: 1
+  mailers: 1
+  stamps: 1
+  completed_pairs: 1
+
+two:
+  thin_elastic: 1
+  thick_elastic: 1
+  fat_quarters: 1
+  mailers: 1
+  stamps: 1
+  completed_pairs: 1

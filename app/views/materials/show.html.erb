@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Thin elastic:</strong>
+  <%= @material.thin_elastic %>
+</p>
+
+<p>
+  <strong>Thick elastic:</strong>
+  <%= @material.thick_elastic %>
+</p>
+
+<p>
+  <strong>Fat quarters:</strong>
+  <%= @material.fat_quarters %>
+</p>
+
+<p>
+  <strong>Mailers:</strong>
+  <%= @material.mailers %>
+</p>
+
+<p>
+  <strong>Stamps:</strong>
+  <%= @material.stamps %>
+</p>
+
+<p>
+  <strong>Completed pairs:</strong>
+  <%= @material.completed_pairs %>
+</p>
+
+<%= link_to 'Edit', edit_material_path(@material) %> |
+<%= link_to 'Back', materials_path %>

@@ -1,0 +1,93 @@
+<%m = Material.find(1)%>
+<%makeable_pairs = [m.thin_elastic, m.thick_elastic, m.fat_quarters].min%>
+<%shippable_pairs = [m.mailers, m.stamps].min%>
+<div>
+    <div class="card flex-controller" style="margin:auto;height:80vh; width:80vw;">
+        <div class="orders grid-ele">
+            <div class="ordersec-top">
+                <div class="os-charts">
+                    <div class="os-chart-legend">
+                        <h3>Created and Shipped</h3>
+                    </div>
+                    <%= pie_chart Order.group(:created || :shipped).count,legend:false, colors:["#E59A01","#4C7064"], width:"140px", height:"140px"; %>
+                </div>
+                <div class="os-charts">
+                    <div class="os-chart-legend">
+                        <h3>Needs Follow-Up</h3>
+                    </div>
+                    <%= pie_chart Order.group(:needs_follow_up).count, legend:false, colors:["#4C7064","#BC4B00"], width:"140px", height:"140px"; %>
+                </div>
+            </div>
+            <div class="ordersec-list">
+                <table class="os-table">
+                    <thead>
+                        <tr class="os-table-header">
+                            <th colspan="3">Orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%@orders = Order.all%>
+                        <% @orders.order("created_at desc").each do |order| %>
+                        <%cl ='os-highlight' if order.needs_follow_up == true%>
+                        <%cl ='os-notice' if order.shipped == false%>
+                        <%cl ='os-complete' if [order.shipped, !order.needs_follow_up, order.created].all?%>
+                        <%cl = 'os-start' if order.created == false%>
+                        <tr class="<%= cl %>">
+                            <td><%= order.customer_name %></td>
+                            <td><%= order.customer_email %></td>
+                            <td>
+                                <div class="view-order"><%= link_to 'View', order%></div>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="revenue grid-ele">
+            <h3>Orders by Day</h3>
+            <%= area_chart Order.group_by_day(:created_at).count(:id), height:"50%", colors: ["#4C7064"], library: {isStacked: false, hAxis: {title: 'Date', fontFamily: "'Karla', sans-serif"}} %>
+            <div class="re-buttons">
+                <%@order = Order.last%>
+                <div class="button-blue"><%= link_to 'New', new_order_path%></div>
+                <div class="re-button"><%= link_to 'All', orders_path%></div>
+                <div class="re-button"><%= link_to 'Most Recent', @order%></div>
+            </div>
+        </div>
+        <div class="inventory grid-ele">
+            <div class="ig-card ig-card-white">
+                <div class="ig-card-header">Makeable Pairs</div>
+                <div class="ig-number-l"><%=makeable_pairs%></div>
+            </div>
+            <div class="ig-card ig-card-white">
+                <div class="ig-card-header">Shippable Pairs</div>
+                <div class="ig-number-l"><%=shippable_pairs%></div>
+            </div>
+            <div class="ig-card ig-card-cream">
+                <div class="ig-card-header">Thin Elastic</div>
+                <div class="ig-number"><%=m.thin_elastic%></div>
+            </div>
+            <div class="ig-card ig-card-cream">
+                <div class="ig-card-header">Thick Elastic</div>
+                <div class="ig-number"><%=m.thick_elastic%></div>
+            </div>
+            <div class="ig-card ig-card-cream">
+                <div class="ig-card-header">Fat Quarters</div>
+                <div class="ig-number"><%=m.fat_quarters%></div>
+            </div>
+            <div class="ig-card ig-card-cream">
+                <div class="ig-card-header">Mailers</div>
+                <div class="ig-number"><%=m.mailers%></div>
+            </div>
+            <div class = "ig-button"><%= link_to 'Add Materials', edit_material_path(m)%></div>
+            <div class = "ig-button"><%= link_to "Make", make_pair_material_path(m) %></div>
+            <div class = "ig-button"><%= link_to "Ship", ship_pair_material_path(m) %></div>
+        </div>
+    </div>
+    <div class="floating">
+        <div class="floating-el fl-login"></div>
+    </div>
+
+    <script type="text/javascript">
+        Packs.application.colorChange()
+    </script>

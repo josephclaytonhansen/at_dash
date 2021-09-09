@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  created: false
+  shipped: false
+  amount: 1
+  stamps: 1
+  revenue: MyString
+  customer_name: MyString
+  customer_email: MyString
+  needs_follow_up: false
+  tracking_number: MyString
+
+two:
+  created: false
+  shipped: false
+  amount: 1
+  stamps: 1
+  revenue: MyString
+  customer_name: MyString
+  customer_email: MyString
+  needs_follow_up: false
+  tracking_number: MyString
