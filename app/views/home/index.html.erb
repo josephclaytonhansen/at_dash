@@ -46,7 +46,7 @@
         </div>
         <div class="revenue grid-ele">
             <h3>Orders by Day</h3>
-            <%= area_chart Order.group_by_day(:created_at).count(:id), height:"50%", colors: ["#4C7064"], library: {isStacked: false, hAxis: {title: 'Date', fontFamily: "'Karla', sans-serif"}} %>
+            <%= area_chart Order.group_by_day(:created_at).count(:id), height:"50%", colors: ["#4C7064"], lineTension: 0.5, library: {isStacked: false, hAxis: {title: 'Date', fontFamily: "'Karla', sans-serif"}} %>
             <div class="re-buttons">
                 <%@order = Order.last%>
                 <div class="button-blue"><%= link_to 'New', new_order_path%></div>
