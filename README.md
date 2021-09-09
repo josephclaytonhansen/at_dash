@@ -1,24 +1,7 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To-do:
+[] devise auth, lock edits and buttons without
+[] devise log in connect
+[] stylize "view order" page
+[] stylize "edit order" page
+[] stylize "edit materials" page and add "buy" buttons
+[] add link to home on all pages
