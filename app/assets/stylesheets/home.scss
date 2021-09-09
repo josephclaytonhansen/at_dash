@@ -34,24 +34,24 @@ $sunflower-shadow: hsla(23, 100, 36, 1);
 
 @font-face {
   font-family: Karla;
-  src: url("fonts/Karla-Regular.ttf");
+  src: image-url("fonts/Karla-Regular.ttf");
 }
 
 @font-face {
   font-family: Karla;
-  src: url("fonts/Karla-Bold.ttf");
+  src: image-url("fonts/Karla-Bold.ttf");
   font-weight: bold;
 }
 
 @font-face {
   font-family: Karla;
-  src: url("fonts/Karla-Italic.ttf");
+  src: image-url("fonts/Karla-Italic.ttf");
   font-style: italic;
 }
 
 @font-face {
   font-family: Lora;
-  src: url("fonts/HinaMincho-Regular.woff");
+  src: image-url("fonts/HinaMincho-Regular.woff");
 }
 
 
@@ -94,7 +94,7 @@ h6 {
 body {
   background-color: #000000;
   background-attachment: fixed;
-  background-image: url("images/flowers3.jpg");
+  background-image: image-url("images/flowers3.jpg");
   background-size: 100vw auto;
   margin: 0px;
 }
@@ -474,7 +474,7 @@ h3 {
   margin-top: 11px;
   margin-left: 8px;
   height: 60px;
-  content: url("images/account.png");
+  content: image-url("images/account.png");
 }
 
 .fl-home {
@@ -482,7 +482,7 @@ h3 {
   margin-top: 11px;
   margin-left: 8px;
   height: 60px;
-  content: url("images/home.png");
+  content: image-url("images/home.png");
 }
 
 
