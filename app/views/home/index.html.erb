@@ -33,11 +33,12 @@
                         <%cl ='os-complete' if [order.shipped, !order.needs_follow_up, order.created].all?%>
                         <%cl = 'os-start' if order.created == false%>
                         <tr class="<%= cl %>">
-                            <td><%= order.customer_name %></td>
-                            <td><%= order.customer_email %></td>
                             <td>
                                 <div class="view-order"><%= link_to 'View', order%></div>
                             </td>
+                            <td><%= order.customer_name %></td>
+                            <td><%= order.customer_email %></td>
+
                         </tr>
                         <% end %>
                     </tbody>
