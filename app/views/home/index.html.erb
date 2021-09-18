@@ -1,6 +1,6 @@
 <%m = Material.find(1)%>
 <%makeable_pairs = [m.thin_elastic, m.thick_elastic, m.fat_quarters].min%>
-<%shippable_pairs = [m.mailers, m.stamps].min%>
+<%shippable_pairs = [m.mailers, m.stamps, m.inserts].min%>
 <div>
     <div class="card flex-controller" style="margin:auto;height:80vh; width:80vw;">
         <div class="orders grid-ele">
